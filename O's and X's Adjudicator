@@ -1,0 +1,79 @@
+/*
+//Write a method to determine the outcome of a game of O's and X's. https://en.wikipedia.org/wiki/Tic-tac-toe
+
+//The method public String judge(List<Integer> history) accepts a List of Integer objects representing the move history 
+//of both players in order as zero indexed offsets. The board squares are numbered with on offset as follows:
+
+//012
+//345
+//678
+//The X player makes the first move. The method should return a String, either "X_WIN", "O_WIN", 
+//or "NO_WINNER", to indicate the outcome of the game.
+
+//Input is guaranteed to represent a valid Os and Xs game.
+*/
+import java.util.List;
+
+public class OXAdjudicator {
+
+   public String judge(List<Integer> history)
+   {
+   char player;
+   String winner;
+   char[] game= new char[9];
+   //put X's in the right spots
+   
+   for (int i=0; i <history.size(); i++) {
+   int j = history.get(i);
+   game[j] = 'X'; 
+   i += 1;
+   }
+   
+   //put Y's in the right spot
+  for (int i=1; i <history.size(); i++) {
+   int j = history.get(i);
+   game[j] = 'O'; 
+    i += 1;  
+    }
+   
+    winner = who (game);
+
+      return winner;
+   }
+   /** who method to determine winner
+   /*  paramenter game is an array of x's and o's representing the board by indices as follows
+   /*  012
+   /*  345
+   /*  678
+    */
+    private String who(char[] game) {  
+    String win;
+    if (game[0] == game[1]&& game[1]==game[2] &&game[0] !=0) 
+      win = game[0] +"_WIN";
+      else {
+      if (game[3] == game[4]&& game[4]==game[5]&&game[3] !=0) 
+      win = game[3] +"_WIN";
+      else {
+      if (game[0] == game[3]&& game[3]==game[6]&&game[0] !=0) 
+       win = game[0] +"_WIN";
+      else {
+      if (game[2] == game[4]&& game[4]==game[6]&&game[2] !=0)
+      win = game[2] +"_WIN";
+      else {
+      if (game[1] == game[4]&& game[4]==game[7]&&game[1] !=0)
+      win = game[1] +"_WIN";
+      else {
+      if (game[0] == game[4]&& game[4]==game[8]&&game[0] !=0)
+      win = game[0] +"_WIN";
+      else {
+      if (game[2] == game[5]&& game[5]==game[8]&&game[2] !=0)
+      win = game[2] +"_WIN";
+      else {
+      if (game[6] == game[7]&& game[7]==game[8]&&game[6] !=0)
+      win = game[6] +"_WIN";
+
+      else  win = "NO_WINNER";
+      }}}}}}}
+      return win;
+      }
+}
