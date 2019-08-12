@@ -1,0 +1,43 @@
+/*Scenario
+With Cereal crops like wheat or rice, before we can eat the grain kernel, we need to remove that inedible hull, 
+or to separate the wheat from the chaff.
+
+Task
+Given a sequence of n integers , separate the negative numbers (chaff) from positive ones (wheat).  
+
+Notes
+Sequence size is at least 3
+Return a new sequence, such that negative numbers (chaff) come first, then positive ones (wheat).
+In Java , you're not allowed to modify the input Array/list/Vector
+Have no fear , it is guaranteed that there will be no zeroes . !alt
+Repetition of numbers in the input sequence could occur , so duplications are included when separating.
+If a misplaced positive number is found in the front part of the sequence, replace it with the last misplaced 
+negative number (the one found near the end of the input). The second misplaced positive number should be swapped 
+with the second last misplaced negative number. Negative numbers found at the head (begining) of the sequence , 
+should be kept in place .
+*/
+public class Kata {
+
+  public static long[] wheatFromChaff(long[] values) {
+  long[] valuesList = new long[values.length]; 
+  int j = values.length-1;
+  int i;
+  for (i=0; i<values.length;i++) {
+  valuesList[i] = values[i];}
+  long hold = 0;
+  for (i=0; i<values.length;i++){
+    if (valuesList[i]>0) {
+      hold = valuesList[i]; 
+      while (j>i) {         
+        if (valuesList[j]<0) {
+          valuesList[i] = valuesList[j];
+          valuesList[j] = hold;
+          break;}//if 
+          else
+          j-=1;
+        }//while
+      } //if
+      }//for
+  return valuesList;
+  }
+}
