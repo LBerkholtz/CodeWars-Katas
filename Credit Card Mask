@@ -1,0 +1,18 @@
+//Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+
+public class Maskify {
+    public static String maskify(String str) 
+ {
+        char[] maskedChars = new char[str.length()];
+        for (int j=str.length()-1; j>=0;j--) {
+          if (j >=str.length()-4) {
+             maskedChars[j] = str.charAt(j);
+          } else if (j <str.length()-4 )
+            maskedChars[j] = '#';
+            }
+       String maskedString = new String(maskedChars);
+       return maskedString;
+            
+    }
+}
